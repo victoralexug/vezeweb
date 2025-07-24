@@ -513,8 +513,8 @@
 			<div class="row align-items-center">
 				<div class="col-lg-10 offset-lg-1">
 					<div class="contact-form">
-						<p class="form-message"></p>
-						<form id="contact-form" class="contact-form form" method="POST" data-netlify="true">
+						<p class="form-message" id="form-message"></p>
+						<form name="form" id="contact-form" class="contact-form form" method="POST" data-netlify="true" netlify>
 							<input type="hidden" name="form-name" value="contact">
 							<div class="row">
 								<div class="col-lg-6 col-md-6">
@@ -539,7 +539,7 @@
 								</div>
 								<div class="col-lg-12 col-md-12">
 									<div class="form-group">
-										<textarea name="message" class="form-control" id="message" cols="30" rows="6" required placeholder="What are we doing for you"></textarea>
+										<textarea name="message" class="form-control" id="message" cols="30" rows="6" required placeholder="How can we assist your business?"></textarea>
 									</div>
 								</div>
 								<div class="col-lg-12 col-md-12">
@@ -680,6 +680,29 @@
 		]
 		}
 	</script>
+	<script>
+		const form = document.getElementById('contact-form');
+		const message = document.getElementById('form-message');
+
+		form.addEventListener('submit', function (e) {
+			e.preventDefault();
+
+			const data = new FormData(form);
+
+			fetch("/", {
+			method: "POST",
+			body: data,
+			})
+			.then(() => {
+			message.innerText = "Message sent successfully!";
+			form.reset();
+			})
+			.catch(() => {
+			message.innerText = "Oops! Something went wrong.";
+			});
+		});
+	</script>
+
 	
 	<!-- jQuery Min JS -->
 	<script src="./assets/js/jquery.min.js"></script>
