@@ -96,6 +96,7 @@
 
 }(jQuery));
 
+// pre loader
 document.addEventListener("DOMContentLoaded", () => {
 	const preloader = document.getElementById("preloader");
 	const body = document.body; // use the <body> element
