@@ -156,9 +156,10 @@
 			<div class="row align-items-center">
 				<div class="col-lg-10 offset-lg-1">
 					<div class="contact-form">
-						<p class="form-message" id="form-message"></p>
-						<form name="form" id="contact-form" class="contact-form form" method="POST" data-netlify="true" netlify>
+						
+						<form name="contact" id="contact-form" class="contact-form form" method="POST" data-netlify="true" netlify-honeypot="bot-field">
 							<input type="hidden" name="form-name" value="contact">
+							<input type="hidden" name="bot-field">
 							<div class="row">
 								<div class="col-lg-6 col-md-6">
 									<div class="form-group">
