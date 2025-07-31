@@ -2131,8 +2131,8 @@ p:last-child {
 
 .footer-logo {
     display: inline-block;
-    margin-bottom: 25px;
-	margin-left: -1.5rem;
+    margin-bottom: 20px;
+	width: 60%;
 }
 
 .footer-heading {
