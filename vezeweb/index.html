@@ -32,6 +32,11 @@
 	<link rel="stylesheet" href="./assets/css/style.css">
 	<!-- Responsive CSS -->
 	<link rel="stylesheet" href="./assets/css/responsive.css">
+	<!-- Swiper Min CSS -->
+	<link rel="stylesheet" href="assets/css/swiper.min.css">
+	<!-- Owl Carousel Min CSS -->
+	<link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+
 </head>
 
 <body>
@@ -120,14 +125,39 @@
 	</div>
 	<!-- End Home Section -->
 
+	<!-- Start About Section -->
+	<section class="about-area section-padding">
+		<div class="container">
+			<div class="row d-flex align-items-center">
+				<div class="col-lg-6 col-md-12 col-sm-12">
+					<div class="about-content">
+						<div class="about-content-text"> 
+							<h2>Top Rated Web Development Company Fueling Innovation</h2>
+							<p>Losing leads because your website looks outdated? We fix that. At Vezeweb, we build modern, scalable, and high-performing web applications using the latest technologies like React, Vue, Wordpress, and more. Do feel free to contact us here to get started.</p>
+							
+							<div class="about-btn-box"> 
+								<a class="default-btn project-btn-1" href="./about/">Learn More<span></span></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-5 offset-lg-1 col-md-12 col-sm-12">
+					<div class="about-image">
+						<img src="./assets/img/about.png" alt="About image">
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End About Section -->
+
 	<!-- Start Services Section -->
-	<section class="services-section section-padding">
+	<section class="services-section">
 		<div class="container">
             <div class="row">
                 <div class="col-sm-12">
 					<div class="section-title">
 						<h6>What We Provide</h6>
-						<h2>Our Services</h2>
 					</div>
                 </div>
             </div>
@@ -147,7 +177,7 @@
 							<i class="fa fa-sliders-h"></i>
 						</div>
 						<h3>Website Customization</h3>
-						<p>Tailoring layouts, themes, and functionality to match your brand and business goals across any platform or CMS.</p>
+						<p>Tailoring layouts, themes, and functionality to match your brand and business goals across any platform.</p>
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-6">
@@ -190,53 +220,81 @@
 		</div>
 	</section>
 	<!-- End Services Section -->
-	
-	
-	<!-- Start About Section -->
-	<section class="about-area section-padding">
-		<div class="container">
-			<div class="row d-flex align-items-center">
-				<div class="col-lg-6 col-md-12 col-sm-12">
-					<div class="about-content">
-						<div class="about-content-text">
-							<h6>About Our Company</h6> 
-							<h2>Top Rated Web Development Company Fueling Innovation</h2>
-							<p>At Vezeweb, we build modern, scalable, and high-performing web applications using the latest technologies like React, Vue, Tailwind, and more.</p>
-							<div class="skills">
-								<div class="skill-item">
-									<h6>Technology Consulting <em>95%</em></h6>
-									<div class="skill-progress">
-										<div class="progres" data-value="95%"></div>
-									</div>
-								</div>
-								<div class="skill-item">
-									<h6>Virtual Workstation <em>75%</em></h6>
-									<div class="skill-progress">
-										<div class="progres" data-value="75%"></div>
-									</div>
-								</div>
-								<div class="skill-item">
-									<h6>Managed IT Service <em>85%</em></h6>
-									<div class="skill-progress">
-										<div class="progres" data-value="85%"></div>
-									</div>
-								</div>
-							</div>
-							<div class="about-btn-box"> 
-								<a class="default-btn project-btn-1" href="./about/">Learn More<span></span></a>
-							</div>
-						</div>
+
+	<!-- Start Project Section -->
+    <section class="project-area bg-grey section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+					<div class="section-title">
+						<h6>Featured Works</h6>
+						<h2>Our Portfolio</h2>
 					</div>
-				</div>
-				<div class="col-lg-5 offset-lg-1 col-md-12 col-sm-12">
-					<div class="about-image">
-						<img src="./assets/img/about.jpg" alt="About image">
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- End About Section -->
+                </div>
+                <!-- project-item -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-item">
+						<img src="./assets/img/portfolio/amarachukwu-eze.png" loading="lazy" alt="vezeweb portfolio image">
+                        <div class="project-content-overlay">
+							<p>Web development</p>
+							<h3><a href="https://amarachukwueze.com/about/">amarachukwu eze</a></h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- project-item -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-item">
+						<img src="./assets/img/portfolio/tmhwithclaire.png" loading="lazy" alt="vezeweb portfolio image">
+                        <div class="project-content-overlay">
+							<p>Web development</p>
+							<h3><a href="https://tmhwithclaire.rf.gd/?i=1">tmhwithclaire</a></h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- project-item -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-item">
+						<img src="./assets/img/portfolio/luxen.png" loading="lazy" alt="vezeweb portfolio image">
+                        <div class="project-content-overlay">
+							<p>Web development</p>
+							<h3><a href="https://luxen.rf.gd/">luxen</a></h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- project-item -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-item">
+						<img src="./assets/img/portfolio/victoralexug.png" loading="lazy" alt="vezeweb portfolio image">
+                        <div class="project-content-overlay">
+							<p>Web development</p>
+							<h3><a href="https://victoralexug.github.io/victoralexug/">portfolio</a></h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- project-item -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-item">
+						<img src="./assets/img/portfolio/qings.png" loading="lazy" alt="vezeweb portfolio image">
+                        <div class="project-content-overlay">
+							<p>Web development</p>
+							<h3><a href="projects.html">Qings</a></h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- project-item -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-item">
+						<img src="./assets/img/portfolio/ecommerce.png" loading="lazy" alt="vezeweb portfolio image">
+                        <div class="project-content-overlay">
+						<p>Web development</p>
+							<h3><a href="projects.html">ecommerce</a></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Project Section -->
 	
 	<!-- Start Work Process Section -->
     <section class="process-section bg-grey section-padding">
@@ -379,81 +437,6 @@
     </section>
     <!-- End Work Process Section -->
 	
-	<!-- Start Project Section -->
-    <section class="project-area bg-grey section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-					<div class="section-title">
-						<h6>Featured Works</h6>
-						<h2>Our Portfolio</h2>
-					</div>
-                </div>
-                <!-- project-item -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="project-item">
-						<img src="./assets/img/portfolio/amarachukwu-eze.png" loading="lazy" alt="vezeweb portfolio image">
-                        <div class="project-content-overlay">
-							<p>Web development</p>
-							<h3><a href="https://amarachukwueze.com/about/">amarachukwu eze</a></h3>
-                        </div>
-                    </div>
-                </div>
-                <!-- project-item -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="project-item">
-						<img src="./assets/img/portfolio/tmhwithclaire.png" loading="lazy" alt="vezeweb portfolio image">
-                        <div class="project-content-overlay">
-							<p>Web development</p>
-							<h3><a href="https://tmhwithclaire.rf.gd/?i=1">tmhwithclaire</a></h3>
-                        </div>
-                    </div>
-                </div>
-                <!-- project-item -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="project-item">
-						<img src="./assets/img/portfolio/luxen.png" loading="lazy" alt="vezeweb portfolio image">
-                        <div class="project-content-overlay">
-							<p>Web development</p>
-							<h3><a href="https://luxen.rf.gd/">luxen</a></h3>
-                        </div>
-                    </div>
-                </div>
-                <!-- project-item -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="project-item">
-						<img src="./assets/img/portfolio/victoralexug.png" loading="lazy" alt="vezeweb portfolio image">
-                        <div class="project-content-overlay">
-							<p>Web development</p>
-							<h3><a href="https://victoralexug.github.io/victoralexug/">portfolio</a></h3>
-                        </div>
-                    </div>
-                </div>
-                <!-- project-item -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="project-item">
-						<img src="./assets/img/portfolio/qings.png" loading="lazy" alt="vezeweb portfolio image">
-                        <div class="project-content-overlay">
-							<p>Web development</p>
-							<h3><a href="projects.html">Qings</a></h3>
-                        </div>
-                    </div>
-                </div>
-                <!-- project-item -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="project-item">
-						<img src="./assets/img/portfolio/ecommerce.png" loading="lazy" alt="vezeweb portfolio image">
-                        <div class="project-content-overlay">
-						<p>Web development</p>
-							<h3><a href="projects.html">ecommerce</a></h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Project Section -->
-	
 	<!-- Start Overview Section -->
 	<section class="overview-section section-padding">
 		<div class="container">
@@ -483,7 +466,97 @@
 	</section>
 	<!-- End Overview Section -->
 	
-	
+	 <!-- Start Testimonial Section -->
+	<section class="testimonial-section pt-100 pb-50">
+		<div class="container">
+			<div class="row">
+                <div class="col-md-12">
+					<div class="section-title">
+						<h6>Testimonial</h6>
+						<h2>Our Client Say</h2>
+					</div>
+                </div>
+				<div class="col-lg-12 col-md-12">
+					<div class="testimonial-slider owl-carousel owl-theme">
+						<!-- testimonials item -->
+						<div class="single-testimonial">
+							<div class="rating-box">
+								<ul>
+									<li><i class="fa fa-star"></i></li>
+									<li><i class="fa fa-star"></i></li>
+									<li><i class="fa fa-star"></i></li>
+									<li><i class="fa fa-star"></i></li>
+									<li><i class="fa fa-star"></i></li>
+								</ul>
+							</div>
+							<div class="testimonial-content">
+								<p>Vezeweb turned my scattered ideas into a sleek, professional portfolio that finally reflects who I am. They were patient, creative, and totally nailed the responsive design. I’ve already landed two freelance gigs thanks to it!</p>
+							</div>
+							<div class="avatar">
+								<img style="width: 90px;" src="assets/img/client/amarachukwueze.png" alt="testimonial images">
+							</div>
+							<div class="testimonial-bio">
+								<div class="bio-info">
+									<h3>Amarachukwu</h3>
+									<span>Senior Data Analyst</span>
+								</div>
+							</div>
+						</div>
+						<!-- testimonials item -->
+						<div class="single-testimonial">
+							<div class="rating-box">
+								<ul>
+									<li><i class="fa fa-star"></i></li>
+									<li><i class="fa fa-star"></i></li>
+									<li><i class="fa fa-star"></i></li>
+									<li><i class="fa fa-star"></i></li>
+									<li><i class="fa fa-star"></i></li>
+								</ul>
+							</div>
+							<div class="testimonial-content">
+								<p>I needed a calm, trustworthy, and accessible space for mental health advocacy, and Vezeweb delivered exactly that. The design was empathetic, clean, and easy to navigate. Most importantly, they truly understood the purpose behind the project</p>
+							</div>
+							<div class="avatar">
+								<img style="width: 90px;" src="assets/img/client/tmhwithclaire.png" alt="testimonial images">
+							</div>
+							<div class="testimonial-bio">
+								<div class="bio-info">
+									<h3>Claire</h3>
+									<span>CEO TMHWithClaire</span>
+								</div>
+							</div>
+						</div>
+						<!-- testimonials item -->
+						<div class="single-testimonial">
+							<div class="rating-box">
+								<ul>
+									<li><i class="fa fa-star"></i></li>
+									<li><i class="fa fa-star"></i></li>
+									<li><i class="fa fa-star"></i></li>
+									<li><i class="fa fa-star"></i></li>
+									<li><i class="fa fa-star"></i></li>
+								</ul>
+							</div>
+							<div class="testimonial-content">
+								<p>Vezeweb gave my hair business a digital glow-up! From booking integrations to showcasing my work, everything feels polished and premium. Clients now find and book me so much easier—it’s been a game-changer</p>
+							</div>
+							<div class="avatar">
+								<img style="width: 90px;" src="assets/img/client/cynthia.png" alt="testimonial images">
+							</div>
+							<div class="testimonial-bio">
+								<div class="bio-info">
+									<h3>Cynthia</h3>
+									<span>Hair sylist and Food Engineer</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Testimonial Section -->
+
 	<!-- Start Hire Section -->
 	<section class="hire-section">
 		<div class="container">
@@ -682,50 +755,8 @@
 			"https://www.instagram.com/vezeweb"
 		]
 		}
-	</script>
-	<script>
-		document.addEventListener("DOMContentLoaded", function () {
-			const form = document.getElementById('contact-form');
-			const formMessage = document.getElementById('form-message');
+	</script>	
 
-			form.addEventListener('submit', function (e) {
-				e.preventDefault();
-
-				const formData = new FormData(form);
-
-				// Show loading message for 1 second
-				formMessage.classList.remove('error', 'success');
-				formMessage.classList.add('loading');
-				formMessage.innerText = "Sending...";
-
-				setTimeout(() => {
-					fetch(form.getAttribute('action') || '/', {
-						method: "POST",
-						body: formData,
-					})
-					.then(response => {
-						formMessage.classList.remove('loading');
-						if (response.ok) {
-							formMessage.classList.add('success');
-							formMessage.innerText = "Message sent successfully!";
-							form.reset();
-						} else {
-							throw new Error("Submission failed");
-						}
-					})
-					.catch(() => {
-						formMessage.classList.remove('loading');
-						formMessage.classList.add('error');
-						formMessage.innerText = "Oops! Something went wrong.";
-					});
-				}, 1200); // 1 second delay
-			});
-		});
-	</script>
-
-
-
-	
 	<!-- jQuery Min JS -->
 	<script src="./assets/js/jquery.min.js"></script>
 	<!-- Popper Min JS -->
@@ -738,8 +769,10 @@
 	<script src="./assets/js/jquery.appear.min.js"></script>
 	<!-- WOW Min JS -->
 	<script src="./assets/js/wow.min.js"></script>
-	<!-- Ajax Mail JS -->
-	
+	<!-- Owl Carousel Min JS -->
+	<script src="assets/js/owl.carousel.min.js"></script>
+	<!-- Swiper Min JS -->
+	<script src="assets/js/swiper.min.js"></script>
 	<!-- Main JS -->
 	<script src="./assets/js/main.js"></script>
 	

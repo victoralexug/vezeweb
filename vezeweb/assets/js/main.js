@@ -3,6 +3,43 @@
 
 	var wind = $(window);
 	
+	var wind = $(window);
+	var parallaxSlider;
+	var parallaxSliderOptions = {
+		speed: 1000,
+		autoplay: true,
+		parallax: true,
+		loop: true,
+
+		on: {
+			init: function() {
+				var swiper = this;
+				for (var i = 0; i < swiper.slides.length; i++) {
+					$(swiper.slides[i])
+						.find('.bg-img')
+						.attr({
+							'data-swiper-parallax': 0.75 * swiper.width
+						});
+				}
+			},
+			resize: function() {
+				this.update();
+			}
+		},
+
+		pagination: {
+			el: '.slider-prlx .parallax-slider .swiper-pagination',
+			dynamicBullets: true,
+			clickable: true
+		},
+
+		navigation: {
+			nextEl: '.slider-prlx .parallax-slider .next-ctrl',
+			prevEl: '.slider-prlx .parallax-slider .prev-ctrl'
+		}
+	};
+	parallaxSlider = new Swiper('.slider-prlx .parallax-slider', parallaxSliderOptions);
+
 	
 	// Var Background image
 	var pageSection = $(".bg-img, section");
@@ -77,7 +114,57 @@
 		});
 	})(jQuery);
 
-	
+	// Testimonial Slider
+	$('.testimonial-slider').owlCarousel({
+		loop: true,
+		nav: true,
+		dots: true,
+		autoplayHoverPause: true,
+		autoplay: true,
+		smartSpeed: 1000,
+		margin: 20,
+		navText: [
+			"<i class='fa fa-chevron-left'></i>",
+			"<i class='fa fa-chevron-right'></i>"
+		],
+		responsive: {
+			0: {
+				items: 1,
+			},
+			768: {
+				items: 2,
+			},
+			1200: {
+				items: 3,
+			}
+		}
+	});
+
+	// Image Sliders
+	$('.image-sliders').owlCarousel({
+		loop: true,
+		nav: true,
+		dots: false,
+		autoplayHoverPause: true,
+		autoplay: true,
+		smartSpeed: 1000,
+		margin: 20,
+		navText: [
+			"<i class='fa fa-chevron-left'></i>",
+			"<i class='fa fa-chevron-right'></i>"
+		],
+		responsive: {
+			0: {
+				items: 1,
+			},
+			768: {
+				items: 1,
+			},
+			1200: {
+				items: 1,
+			}
+		}
+	});
 	
 	// WOW JS
 	$(window).on('load', function() {
@@ -112,4 +199,43 @@ document.addEventListener("DOMContentLoaded", () => {
 			body.classList.add("fade-in");
 		}
 	}, 1000); // 1s delay
+});
+
+//mail submit
+document.addEventListener("DOMContentLoaded", function () {
+	const form = document.getElementById('contact-form');
+	const formMessage = document.getElementById('form-message');
+
+	form.addEventListener('submit', function (e) {
+		e.preventDefault();
+
+		const formData = new FormData(form);
+
+		// Show loading message for 1 second
+		formMessage.classList.remove('error', 'success');
+		formMessage.classList.add('loading');
+		formMessage.innerText = "Sending...";
+
+		setTimeout(() => {
+			fetch(form.getAttribute('action') || '/', {
+				method: "POST",
+				body: formData,
+			})
+			.then(response => {
+				formMessage.classList.remove('loading');
+				if (response.ok) {
+					formMessage.classList.add('success');
+					formMessage.innerText = "Message sent successfully!";
+					form.reset();
+				} else {
+					throw new Error("Submission failed");
+				}
+			})
+			.catch(() => {
+				formMessage.classList.remove('loading');
+				formMessage.classList.add('error');
+				formMessage.innerText = "Oops! Something went wrong.";
+			});
+		}, 1200); // 1 second delay
+	});
 });

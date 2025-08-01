@@ -103,6 +103,19 @@
 		padding-left: 40px;
 		padding-right: 40px;
 	}
+
+	.testimonial-slider .testimonial-single-item .testimonial-content .icon {
+		margin-top: 15px;
+		margin-bottom: 15px;
+	}
+
+	.testimonial-slider.owl-theme .owl-nav [class*=owl-] {
+		left: 0;
+	}
+
+	.testimonial-slider.owl-theme .owl-nav [class*=owl-].owl-next {
+		right: 0;
+	}
 	
 	.subscribe-content {
 		margin-bottom: 25px;
@@ -215,6 +228,10 @@
 		max-width: unset;
 		padding-bottom: 10px;
 		margin-bottom: 20px;
+	}
+
+	.single-testimonial {
+		padding: 30px 10px;
 	}
 
 	.single-pricing-box .pricing-header h3 {
@@ -555,6 +572,19 @@
 		margin-top: 35px;
 	}
 	
+	.testimonial-slider .testimonial-single-item .testimonial-content .icon {
+		margin-top: 15px;
+		margin-bottom: 15px;
+	}
+
+	.testimonial-slider.owl-theme .owl-nav [class*=owl-] {
+		left: 0;
+	}
+
+	.testimonial-slider.owl-theme .owl-nav [class*=owl-].owl-next {
+		right: 0;
+	}
+
 	.hire-inside-wrapper {
 		padding: 70px 75px;
 	}
@@ -758,6 +788,14 @@
 		font-size: 33px;
 	}
 
+	.testimonial-slider.owl-theme .owl-nav [class*=owl-] {
+		left: 0;
+	}
+
+	.testimonial-slider.owl-theme .owl-nav [class*=owl-].owl-next {
+		right: 0;
+	}
+	
 	.single-services-box {
 		padding: 30px 25px;
 	}
