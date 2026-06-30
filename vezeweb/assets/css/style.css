@@ -623,29 +623,34 @@ p:last-child {
 .home-section {
 	position: relative;
 	z-index: 1;
-	height: 800px;
-	min-height: 100vh;
-    background: url(../img/slider-1.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
+	height: 100vh;
+	min-height: 700px;
+	background: #070810;
+	overflow: hidden;
 }
 
 .home-section:before {
     content: "";
     position: absolute;
-    z-index: -1;
+    z-index: 0;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: .7;
-    background: #02050b;
+    opacity: 1;
+    background: none;
+    background-image:
+        linear-gradient(rgba(123, 104, 238, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(123, 104, 238, 0.045) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
 }
 
 .main-banner-content {
 	text-align: center;
-	padding-top: 50px;
+	padding-top: 20px;
+	position: relative;
+	z-index: 3;
 }
 
 .main-banner-content h1 {
@@ -2540,3 +2545,219 @@ p:last-child {
     border-radius: 10px;
     text-align: center;
   }
+
+
+/* ============================================================
+   PREMIUM HERO — animated dark bg + 3D rotating V
+   ============================================================ */
+
+/* Animated glow orbs layer */
+.hero-bg-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.hero-orb {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.hero-orb-1 {
+    width: 750px;
+    height: 750px;
+    top: -280px;
+    left: -220px;
+    background: radial-gradient(circle at center, rgba(123, 104, 238, 0.32) 0%, rgba(100, 80, 220, 0.12) 40%, transparent 70%);
+    filter: blur(70px);
+    animation: heroOrb1 14s ease-in-out infinite;
+}
+
+.hero-orb-2 {
+    width: 600px;
+    height: 600px;
+    bottom: -200px;
+    right: -120px;
+    background: radial-gradient(circle at center, rgba(62, 87, 208, 0.35) 0%, rgba(40, 60, 180, 0.1) 40%, transparent 70%);
+    filter: blur(75px);
+    animation: heroOrb2 17s ease-in-out infinite;
+}
+
+.hero-orb-3 {
+    width: 420px;
+    height: 420px;
+    top: 25%;
+    left: 38%;
+    background: radial-gradient(circle at center, rgba(80, 140, 255, 0.18) 0%, transparent 70%);
+    filter: blur(85px);
+    animation: heroOrb3 10s ease-in-out infinite;
+}
+
+@keyframes heroOrb1 {
+    0%, 100% { transform: translate(0, 0); }
+    33%       { transform: translate(90px, 80px); }
+    66%       { transform: translate(-55px, 140px); }
+}
+
+@keyframes heroOrb2 {
+    0%, 100% { transform: translate(0, 0); }
+    50%      { transform: translate(-110px, -95px); }
+}
+
+@keyframes heroOrb3 {
+    0%, 100% { transform: scale(1);   opacity: 0.55; }
+    50%      { transform: scale(1.35); opacity: 0.2; }
+}
+
+/* Content row needs to sit above all bg layers */
+.home-section .d-table {
+    position: relative;
+    z-index: 2;
+}
+
+/* Left text column */
+.hero-left-content {
+    position: relative;
+    z-index: 3;
+}
+
+.hero-left-content .main-banner-content {
+    text-align: left;
+    padding-top: 0;
+    padding-right: 30px;
+}
+
+.hero-left-content .main-banner-content .banner-btn {
+    justify-content: flex-start;
+}
+
+/* 3D V canvas column */
+.hero-v-col {
+    position: relative;
+    z-index: 3;
+}
+
+.hero-v-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 560px;
+}
+
+/* Ambient glow behind the V */
+.hero-v-glow {
+    position: absolute;
+    width: 72%;
+    height: 72%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(123, 104, 238, 0.18) 0%, rgba(123, 104, 238, 0.04) 55%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: vGlowPulse 4s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes vGlowPulse {
+    0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+    50%      { opacity: 1.0; transform: translate(-50%, -50%) scale(1.18); }
+}
+
+#heroCanvas {
+    display: block;
+    position: relative;
+    z-index: 2;
+}
+
+/* Hero badge */
+.hero-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    border: 1px solid rgba(123, 104, 238, 0.55);
+    border-radius: 24px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #a89cf5;
+    background: rgba(123, 104, 238, 0.1);
+    margin-bottom: 22px;
+}
+
+/* Gradient highlight in h1 */
+.hero-highlight {
+    background: linear-gradient(130deg, #9b8fff 0%, #7b68ee 40%, #5eaaff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Social icons — fixed bottom-right of hero */
+.hero-social-fixed {
+    position: absolute;
+    bottom: 28px;
+    right: 36px;
+    z-index: 5;
+    display: flex;
+    gap: 9px;
+    align-items: center;
+}
+
+.hero-social-fixed a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 11px;
+    transition: all 0.3s;
+    text-decoration: none;
+}
+
+.hero-social-fixed a:hover {
+    color: #fff;
+    border-color: #7b68ee;
+    background: rgba(123, 104, 238, 0.25);
+}
+
+/* ---- Responsive overrides ---- */
+@media (max-width: 1199px) {
+    .hero-v-wrapper {
+        height: 420px;
+    }
+}
+
+@media (max-width: 991px) {
+    .hero-left-content .main-banner-content {
+        text-align: center;
+        padding-right: 0;
+    }
+    .hero-left-content .main-banner-content .banner-btn {
+        justify-content: center;
+    }
+    .hero-v-wrapper {
+        height: 300px;
+        padding: 0;
+    }
+    .hero-social-fixed {
+        bottom: 16px;
+        right: 20px;
+    }
+}
+
+@media (max-width: 575px) {
+    .hero-v-wrapper {
+        height: 240px;
+    }
+    .main-banner-content h1 {
+        font-size: 42px;
+    }
+}

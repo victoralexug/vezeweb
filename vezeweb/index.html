@@ -96,28 +96,49 @@
 	
 	<!-- Start Home Section -->
 	<div class="home-section">
+
+		<!-- Animated glow orbs -->
+		<div class="hero-bg-layer">
+			<div class="hero-orb hero-orb-1"></div>
+			<div class="hero-orb hero-orb-2"></div>
+			<div class="hero-orb hero-orb-3"></div>
+		</div>
+
+		<!-- Social icons — bottom right -->
+		<div class="hero-social-fixed">
+			<a href="https://www.facebook.com/vezeweb/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+			<a href="https://www.x.com/vezeweb/" target="_blank"><i class="fab fa-twitter"></i></a>
+			<a href="https://www.instagram.com/vezeweb/" target="_blank"><i class="fab fa-instagram"></i></a>
+			<a href="https://www.youtube.com/@vezewebofficial8665" target="_blank"><i class="fab fa-youtube"></i></a>
+		</div>
+
 		<div class="d-table">
 			<div class="d-table-cell">
 				<div class="container">
 					<div class="row align-items-center">
-						<div class="col-lg-8 offset-lg-2 col-md-12">
+
+						<!-- Mobile + desktop: 3D V first, then text -->
+
+						<!-- 3D rotating V — first on mobile, right on desktop -->
+						<div class="col-12 col-lg-6 hero-v-col order-1 order-lg-2">
+							<div class="hero-v-wrapper">
+								<div class="hero-v-glow"></div>
+								<canvas id="heroCanvas"></canvas>
+							</div>
+						</div>
+
+						<!-- Text content — second on mobile, left on desktop -->
+						<div class="col-12 col-lg-6 hero-left-content order-2 order-lg-1">
 							<div class="main-banner-content">
-								<ul class="social-icon-list">
-									<li><a href="https://www.facebook.com/vezeweb/" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-									<li><a href="https://www.x.com/vezeweb/" target="_blank"><i class="fab fa-twitter"></i></a></li>
-									<li><a href="https://www.instagram.com/vezeweb/" target="_blank"><i class="fab fa-instagram"></i></a></li>
-									<li><a href="https://www.youtube.com/@vezewebofficial8665" target="_blank"><i class="fab fa-youtube"></i></a></li>
-								</ul>
-								<h1>Web Development and Digital Growth Agency</h1>
-								<p>We are a team of experienced frontend and full-stack developers committed to helping startups and SMEs scale digitally through powerful web solutions. Our expertise lies in building responsive, high-performance web applications tailored to your business needs.
-</p>
+								<h1>Websites That Look Brilliant, Load Fast, and <span class="hero-highlight">Win You Clients.</span></h1>
+								<p>We design and engineer premium web experiences — from pixel-perfect landing pages to complex full-stack apps — built to turn visitors into loyal customers.</p>
 								<div class="banner-btn">
-									<a href="./contact/" class="default-btn-one"> Let’s Talk<span></span></a>
-									<a href="./services/" class="default-btn"> Our Services<span></span></a>
-									
+									<a href="./contact/" class="default-btn-one">Start a Project<span></span></a>
+									<a href="./projects/" class="default-btn">View Our Work<span></span></a>
 								</div>
 							</div>
 						</div>
+
 					</div>
 				</div>
 			</div>
@@ -781,7 +802,170 @@
 	<script src="assets/js/swiper.min.js"></script>
 	<!-- Main JS -->
 	<script src="./assets/js/main.js"></script>
-	
+
+	<!-- Three.js -->
+	<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+
+	<!-- 3D Favicon Hero -->
+	<script>
+	(function () {
+		'use strict';
+
+		var canvas  = document.getElementById('heroCanvas');
+		var wrapper = document.querySelector('.hero-v-wrapper');
+		if (!canvas || !wrapper || typeof THREE === 'undefined') return;
+
+		/* ── Renderer ── */
+		var W = wrapper.offsetWidth  || 500;
+		var H = wrapper.offsetHeight || 560;
+
+		var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+		renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+		renderer.setSize(W, H);
+		renderer.setClearColor(0x000000, 0);
+
+		/* ── Scene & Camera ── */
+		var scene  = new THREE.Scene();
+		var camera = new THREE.PerspectiveCamera(42, W / H, 0.1, 100);
+		camera.position.set(0, 0, 6.5);
+
+		/* ── Shape: exact favicon outline ──────────────────────────────────
+		 *
+		 *  1. outer-TL → tip              left arm outer edge
+		 *  2. tip → outer-TR              right arm outer edge
+		 *  3. outer-TR → hook-left        right arm extends LEFT across hollow
+		 *  4. hook-left → hook-tip        hook drops STRAIGHT DOWN
+		 *  5. hook-tip → inner-TL         long diagonal back UP-LEFT
+		 *  6. close → outer-TL            horizontal close at top
+		 */
+		var shape = new THREE.Shape();
+		shape.moveTo(-1.05,  1.00);  /* outer top-left  */
+		shape.lineTo(  0.00, -1.35); /* bottom tip      */
+		shape.lineTo(  1.05,  1.00); /* outer top-right */
+		shape.lineTo(  0.42,  1.00); /* inner top-right */
+		shape.lineTo(  0.00, -0.55); /* inner tip       */
+		shape.lineTo( -0.42,  1.00); /* inner top-left  */
+		shape.closePath();
+
+		var geo = new THREE.ExtrudeGeometry(shape, {
+			depth: 0.50,
+			bevelEnabled:   true,
+			bevelThickness: 0.10,
+			bevelSize:      0.08,
+			bevelSegments:  8
+		});
+		geo.center();
+		geo.computeBoundingBox();
+
+		/* ── Materials — black body with crisp specular, matching the real favicon ── */
+		var matFront = new THREE.MeshPhongMaterial({
+			color:     0x0d0d0d,
+			emissive:  0x000000,
+			specular:  0xffffff,
+			shininess: 300
+		});
+
+		/* Subtle coloured glow shell visible from behind */
+		var matShell = new THREE.MeshPhongMaterial({
+			color:       0x3a3a5c,
+			emissive:    0x1a1a3a,
+			side:        THREE.BackSide,
+			transparent: true,
+			opacity:     0.45
+		});
+
+		var mesh  = new THREE.Mesh(geo, matFront);
+		var shell = new THREE.Mesh(geo, matShell);
+		shell.scale.setScalar(1.06);
+
+		/* Fine edge lines to trace the silhouette */
+		var edgeLines = new THREE.LineSegments(
+			new THREE.EdgesGeometry(geo, 15),
+			new THREE.LineBasicMaterial({ color: 0x888888, transparent: true, opacity: 0.35 })
+		);
+
+		var group = new THREE.Group();
+		group.add(shell);
+		group.add(mesh);
+		group.add(edgeLines);
+
+		/* ── Partial top cover — grows from left edge, stops just before right edge ── */
+		var bb      = geo.boundingBox;
+		var cTopY   = bb.max.y;
+		var cLeft   = bb.min.x;
+		var cRight  = bb.min.x + (bb.max.x - bb.min.x) * 0.85;
+		var cZFront = bb.max.z;
+		var cZBack  = bb.min.z;
+
+		var coverVerts = new Float32Array([
+			cLeft,  cTopY, cZBack,
+			cLeft,  cTopY, cZFront,
+			cRight, cTopY, cZFront,
+			cRight, cTopY, cZBack
+		]);
+		var coverGeo = new THREE.BufferGeometry();
+		coverGeo.setAttribute('position', new THREE.BufferAttribute(coverVerts, 3));
+		coverGeo.setIndex(new THREE.BufferAttribute(new Uint16Array([0,1,2, 0,2,3]), 1));
+		coverGeo.computeVertexNormals();
+
+		var matCover = new THREE.MeshPhongMaterial({
+			color:     0x0d0d0d,
+			emissive:  0x000000,
+			specular:  0xffffff,
+			shininess: 300,
+			side:      THREE.DoubleSide
+		});
+		group.add(new THREE.Mesh(coverGeo, matCover));
+		group.add(new THREE.LineSegments(
+			new THREE.EdgesGeometry(coverGeo),
+			new THREE.LineBasicMaterial({ color: 0x888888, transparent: true, opacity: 0.4 })
+		));
+
+		scene.add(group);
+
+		/* ── Lights ── */
+		/* Soft fill so the black reads on the dark background */
+		scene.add(new THREE.AmbientLight(0xffffff, 0.25));
+
+		/* Main key light — bright white from upper-right front */
+		var key = new THREE.DirectionalLight(0xffffff, 3.5);
+		key.position.set(3, 4, 5);
+		scene.add(key);
+
+		/* Warm rim from upper-left to separate the shape from background */
+		var rim = new THREE.DirectionalLight(0xffd080, 1.2);
+		rim.position.set(-3, 2, 1);
+		scene.add(rim);
+
+		/* Cool blue fill from below to lift the underside */
+		var fill = new THREE.PointLight(0x4488ff, 1.5, 16);
+		fill.position.set(0, -4, 3);
+		scene.add(fill);
+
+		/* ── Animation ── */
+		var t = 0;
+		function animate() {
+			requestAnimationFrame(animate);
+			t += 0.009;
+			group.rotation.y = t;
+			group.position.y = Math.sin(t * 0.65) * 0.14;
+			group.rotation.x = Math.sin(t * 0.38) * 0.07;
+			renderer.render(scene, camera);
+		}
+		animate();
+
+		/* ── Resize ── */
+		window.addEventListener('resize', function () {
+			W = wrapper.offsetWidth  || W;
+			H = wrapper.offsetHeight || H;
+			renderer.setSize(W, H);
+			camera.aspect = W / H;
+			camera.updateProjectionMatrix();
+		});
+	}());
+	</script>
+
+
 </body>
 
 </html>
