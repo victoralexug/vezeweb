@@ -2827,17 +2827,46 @@ p:last-child {
 
 /* Hero badge */
 .hero-badge {
-    display: inline-block;
-    padding: 6px 16px;
-    border: 1px solid rgba(123, 104, 238, 0.55);
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 8px 18px 8px 14px;
     border-radius: 24px;
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    color: #a89cf5;
-    background: rgba(123, 104, 238, 0.1);
+    color: #cfc7ff;
+    background: linear-gradient(rgba(18, 14, 40, 0.85), rgba(18, 14, 40, 0.85)) padding-box,
+                linear-gradient(120deg, #9b8fff, #5eaaff, #9b8fff) border-box;
+    border: 1px solid transparent;
+    background-size: 100% 100%, 220% 220%;
+    animation: heroBadgeSheen 6s ease infinite;
+    box-shadow: 0 0 0 1px rgba(123, 104, 238, 0.12), 0 4px 18px rgba(94, 76, 210, 0.25);
     margin-bottom: 22px;
+}
+
+.hero-badge-dot {
+    position: relative;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #5eaaff;
+    box-shadow: 0 0 0 rgba(94, 170, 255, 0.6);
+    animation: heroBadgeDotPulse 2s ease-out infinite;
+    flex-shrink: 0;
+}
+
+@keyframes heroBadgeSheen {
+    0%, 100% { background-position: 0% 0%, 0% 50%; }
+    50%      { background-position: 0% 0%, 100% 50%; }
+}
+
+@keyframes heroBadgeDotPulse {
+    0%   { box-shadow: 0 0 0 0 rgba(94, 170, 255, 0.65); }
+    70%  { box-shadow: 0 0 0 7px rgba(94, 170, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(94, 170, 255, 0); }
 }
 
 /* Gradient highlight in h1 */
