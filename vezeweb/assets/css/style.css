@@ -2034,10 +2034,10 @@ p:last-child {
 .page-title-area {
 	position: relative;
 	z-index: 1;
-	background-image: url(../img/page-title-bg.jpg);
-	background-position: center center;
-	background-size: cover;
-	background-repeat: no-repeat;
+	background:
+		radial-gradient(120% 130% at 50% -20%, #1c1730 0%, #0d0a17 45%, #050308 80%),
+		linear-gradient(180deg, #08060d 0%, #050308 100%);
+	overflow: hidden;
 	height: 450px;
 }
 
@@ -2049,8 +2049,24 @@ p:last-child {
 	width: 100%;
 	left: 0;
 	top: 0;
-	opacity: 0.5;
-	background-color: #030821;
+	opacity: 1;
+	background-image:
+		linear-gradient(rgba(123, 104, 238, 0.045) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(123, 104, 238, 0.045) 1px, transparent 1px);
+	background-size: 60px 60px;
+	pointer-events: none;
+}
+
+.page-title-area::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	background-image:
+		radial-gradient(ellipse 85% 90% at 50% 35%, transparent 40%, rgba(0, 0, 0, 0.5) 100%),
+		url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+	background-blend-mode: normal, overlay;
+	pointer-events: none;
 }
 
 .page-title-content {
@@ -2101,7 +2117,7 @@ p:last-child {
 	width: 6px;
 	height: 6px;
 	border-radius: 50%;
-	background-color: #FF9800;
+	background-color: #7b68ee;
 }
 
 .page-title-content ul li:last-child::before {
