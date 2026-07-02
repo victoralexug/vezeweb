@@ -97,11 +97,13 @@
 	<!-- Start Home Section -->
 	<div class="home-section">
 
-		<!-- Animated glow orbs -->
+		<!-- Animated glow orbs + interactive particle network -->
 		<div class="hero-bg-layer">
-			<div class="hero-orb hero-orb-1"></div>
-			<div class="hero-orb hero-orb-2"></div>
-			<div class="hero-orb hero-orb-3"></div>
+			<div class="hero-orb-parallax" data-depth="18"><div class="hero-orb hero-orb-1"></div></div>
+			<div class="hero-orb-parallax" data-depth="26"><div class="hero-orb hero-orb-2"></div></div>
+			<div class="hero-orb-parallax" data-depth="34"><div class="hero-orb hero-orb-3"></div></div>
+			<div class="hero-spotlight"></div>
+			<canvas id="heroParticles" class="hero-particles"></canvas>
 		</div>
 
 		<!-- Social icons — bottom right -->
@@ -130,8 +132,9 @@
 						<!-- Text content — second on mobile, left on desktop -->
 						<div class="col-12 col-lg-6 hero-left-content order-2 order-lg-1">
 							<div class="main-banner-content">
-								<h1>Websites That Look Brilliant, Load Fast, and <span class="hero-highlight">Win You Clients.</span></h1>
-								<p>We design and engineer premium web experiences — from pixel-perfect landing pages to complex full-stack apps — built to turn visitors into loyal customers.</p>
+								<div class="hero-badge">Web Design &amp; Development Studio</div>
+								<h1>Websites That <span class="hero-highlight">Win You Clients.</span></h1>
+								<p>Fast, beautiful, and built to convert.</p>
 								<div class="banner-btn">
 									<a href="./contact/" class="default-btn-one">Start a Project<span></span></a>
 									<a href="./projects/" class="default-btn">View Our Work<span></span></a>
@@ -243,85 +246,132 @@
 	<!-- End Services Section -->
 
 	<!-- Start Project Section -->
-    <section class="project-area bg-grey section-padding">
+    <section class="project-area section-padding">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
 					<div class="section-title">
 						<h6>Featured Works</h6>
 						<h2>Our Portfolio</h2>
+						<p class="section-subtitle">A curated selection of projects we've designed, built, and shipped.</p>
 					</div>
                 </div>
-				<!-- project-item -->
-                <div class="col-lg-4 col-md-6">
+            </div>
+            <!-- Portfolio Filter -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="portfolio-filter">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="web">Web</button>
+                        <button class="filter-btn" data-filter="mobile">Mobile App</button>
+                        <button class="filter-btn" data-filter="storefront">Storefront</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row portfolio-grid">
+                <!-- MentorFair — Mobile App (multi-image slider) -->
+                <div class="col-lg-4 col-md-6 portfolio-item mobile">
                     <div class="project-item">
-						<img src="./assets/img/portfolio/dataherafrica.jpeg" loading="lazy" alt="vezeweb portfolio image">
+                        <div class="swiper portfolio-swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <img src="./assets/img/portfolio/mentorfair-1.png" loading="lazy" alt="MentorFair screen 1">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="./assets/img/portfolio/mentorfair-2.png" loading="lazy" alt="MentorFair screen 2">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="./assets/img/portfolio/mentorfair-3.png" loading="lazy" alt="MentorFair screen 3">
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                        <span class="project-badge mobile-badge">Mobile App</span>
                         <div class="project-content-overlay">
-							<p>Web development</p>
-							<h3><a href="https://dataherafrica.org/" target="_blank">DataHer Africa</a></h3>
+                            <p>Mobile Application</p>
+                            <h3><a href="#" target="_blank">MentorFair</a></h3>
+                            <span class="project-meta">iOS &amp; Android</span>
                         </div>
                     </div>
                 </div>
-                <!-- project-item -->
-                <div class="col-lg-4 col-md-6">
+                <!-- VezStora — Storefront (multi-image slider) -->
+                <div class="col-lg-4 col-md-6 portfolio-item storefront">
                     <div class="project-item">
-						<img src="./assets/img/portfolio/amarachukwueze.jpeg" loading="lazy" alt="vezeweb portfolio image">
+                        <div class="swiper portfolio-swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <img src="./assets/img/portfolio/vezstora-1.png" loading="lazy" alt="VezStora screen 1">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="./assets/img/portfolio/vezstora-2.png" loading="lazy" alt="VezStora screen 2">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="./assets/img/portfolio/vezstora-3.png" loading="lazy" alt="VezStora screen 3">
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                        <span class="project-badge store-badge">Storefront</span>
                         <div class="project-content-overlay">
-							<p>Web development</p>
-							<h3><a href="https://amarachukwueze.com/" target="_blank">amarachukwu eze</a></h3>
+                            <p>E-Commerce Storefront</p>
+                            <h3><a href="https://vezstora.com" target="_blank">VezStora</a></h3>
+                            <span class="project-meta">Full-Stack Commerce</span>
                         </div>
                     </div>
                 </div>
-                <!-- project-item -->
-                <div class="col-lg-4 col-md-6">
+                <!-- DataHer Africa -->
+                <div class="col-lg-4 col-md-6 portfolio-item web">
                     <div class="project-item">
-						<img src="./assets/img/portfolio/luxen.jpeg" loading="lazy" alt="vezeweb portfolio image">
+                        <img src="./assets/img/portfolio/dataherafrica.jpeg" loading="lazy" alt="DataHer Africa">
+                        <span class="project-badge web-badge">Web</span>
                         <div class="project-content-overlay">
-							<p>Web development</p>
-							<h3><a href="https://luxen.rf.gd/" target="_blank">luxen</a></h3>
+                            <p>Web Development</p>
+                            <h3><a href="https://dataherafrica.org/" target="_blank">DataHer Africa</a></h3>
+                            <span class="project-meta">Non-Profit</span>
                         </div>
                     </div>
                 </div>
-                <!-- project-item -->
-                <div class="col-lg-4 col-md-6">
+                <!-- Amarachukwu Eze -->
+                <div class="col-lg-4 col-md-6 portfolio-item web">
                     <div class="project-item">
-						<img src="./assets/img/portfolio/tmhwithclaire.png" loading="lazy" alt="vezeweb portfolio image">
+                        <img src="./assets/img/portfolio/amarachukwueze.jpeg" loading="lazy" alt="Amarachukwu Eze Portfolio">
+                        <span class="project-badge web-badge">Web</span>
                         <div class="project-content-overlay">
-							<p>Web development</p>
-							<h3><a href="https://tmhwithclaire.rf.gd/?i=1" target="_blank">tmhwithclaire</a></h3>
+                            <p>Web Development</p>
+                            <h3><a href="https://amarachukwueze.com/" target="_blank">Amarachukwu Eze</a></h3>
+                            <span class="project-meta">Personal Portfolio</span>
                         </div>
                     </div>
                 </div>
-                <!-- project-item -->
-                <div class="col-lg-4 col-md-6">
+                <!-- TMH With Claire -->
+                <div class="col-lg-4 col-md-6 portfolio-item web">
                     <div class="project-item">
-						<img src="./assets/img/portfolio/victoralexug.png" loading="lazy" alt="vezeweb portfolio image">
+                        <img src="./assets/img/portfolio/tmhwithclaire.png" loading="lazy" alt="TMH With Claire">
+                        <span class="project-badge web-badge">Web</span>
                         <div class="project-content-overlay">
-							<p>Web development</p>
-							<h3><a href="https://victoralexug.github.io/victoralexug/" target="_blank" rel="noopener noreferrer">portfolio</a></h3>
+                            <p>Web Development</p>
+                            <h3><a href="https://tmhwithclaire.rf.gd/?i=1" target="_blank">TMH With Claire</a></h3>
+                            <span class="project-meta">Mental Health</span>
                         </div>
                     </div>
                 </div>
-                <!-- project-item -->
-                <div class="col-lg-4 col-md-6">
+                <!-- Luxen -->
+                <div class="col-lg-4 col-md-6 portfolio-item web">
                     <div class="project-item">
-						<img src="./assets/img/portfolio/qings.png" loading="lazy" alt="vezeweb portfolio image">
+                        <img src="./assets/img/portfolio/luxen.jpeg" loading="lazy" alt="Luxen">
+                        <span class="project-badge web-badge">Web</span>
                         <div class="project-content-overlay">
-							<p>Web development</p>
-							<h3><a href="projects.html">Qings</a></h3>
+                            <p>Web Development</p>
+                            <h3><a href="https://luxen.rf.gd/" target="_blank">Luxen</a></h3>
+                            <span class="project-meta">Lifestyle Brand</span>
                         </div>
                     </div>
                 </div>
-                
-                <!-- project-item -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="project-item">
-						<img src="./assets/img/portfolio/ecommerce.png" loading="lazy" alt="vezeweb portfolio image">
-                        <div class="project-content-overlay">
-						<p>Web development</p>
-							<h3><a href="projects.html">ecommerce</a></h3>
-                        </div>
-                    </div>
+            </div>
+            <!-- View All CTA -->
+            <div class="row">
+                <div class="col-12 text-center portfolio-cta">
+                    <a href="./projects/" class="default-btn">View All Projects <span></span></a>
                 </div>
             </div>
         </div>
@@ -803,6 +853,211 @@
 	<!-- Main JS -->
 	<script src="./assets/js/main.js"></script>
 
+	<!-- Portfolio card swipers -->
+	<script>
+	document.querySelectorAll('.portfolio-swiper').forEach(function (el) {
+		new Swiper(el, {
+			loop: true,
+			autoplay: { delay: 2800, disableOnInteraction: false },
+			speed: 600,
+			pagination: { el: el.querySelector('.swiper-pagination'), clickable: true }
+		});
+	});
+	</script>
+
+	<!-- Portfolio filter -->
+	<script>
+	(function () {
+		var btns  = document.querySelectorAll('.filter-btn');
+		var items = document.querySelectorAll('.portfolio-item');
+		btns.forEach(function (btn) {
+			btn.addEventListener('click', function () {
+				btns.forEach(function (b) { b.classList.remove('active'); });
+				this.classList.add('active');
+				var filter = this.getAttribute('data-filter');
+				items.forEach(function (item) {
+					if (filter === 'all' || item.classList.contains(filter)) {
+						item.classList.remove('hidden');
+					} else {
+						item.classList.add('hidden');
+					}
+				});
+			});
+		});
+	}());
+	</script>
+
+	<!-- Hero background: cursor parallax + interactive particle network -->
+	<script>
+	(function () {
+		'use strict';
+
+		var heroSection = document.querySelector('.home-section');
+		var canvas = document.getElementById('heroParticles');
+		if (!heroSection || !canvas) return;
+
+		var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+		/* ── Cursor parallax for glow orbs + spotlight ── */
+		var parallaxEls = document.querySelectorAll('.hero-orb-parallax');
+		var mx = 0.5, my = 0.4;
+		var rafParallax = null;
+
+		function applyParallax() {
+			rafParallax = null;
+			var dx = (mx - 0.5) * 2;
+			var dy = (my - 0.4) * 2;
+			parallaxEls.forEach(function (el) {
+				var depth = parseFloat(el.getAttribute('data-depth')) || 20;
+				el.style.transform = 'translate3d(' + (dx * depth) + 'px,' + (dy * depth) + 'px,0)';
+			});
+			heroSection.style.setProperty('--mx', (mx * 100) + '%');
+			heroSection.style.setProperty('--my', (my * 100) + '%');
+		}
+
+		if (fine && !reduceMotion) {
+			heroSection.addEventListener('mousemove', function (e) {
+				var rect = heroSection.getBoundingClientRect();
+				mx = (e.clientX - rect.left) / rect.width;
+				my = (e.clientY - rect.top) / rect.height;
+				if (!rafParallax) rafParallax = requestAnimationFrame(applyParallax);
+			});
+			heroSection.addEventListener('mouseleave', function () {
+				mx = 0.5; my = 0.4;
+				if (!rafParallax) rafParallax = requestAnimationFrame(applyParallax);
+			});
+		}
+
+		/* ── Interactive particle network ── */
+		var ctx = canvas.getContext('2d');
+		var W, H, dpr = Math.min(window.devicePixelRatio || 1, 2);
+		var particles = [];
+		var mouse = { x: null, y: null, active: false };
+		var LINK_DIST = 130;
+		var MOUSE_DIST = 160;
+
+		function seedParticles() {
+			var count = Math.min(90, Math.round((W * H) / 16000));
+			particles = [];
+			for (var i = 0; i < count; i++) {
+				particles.push({
+					x: Math.random() * W,
+					y: Math.random() * H,
+					vx: (Math.random() - 0.5) * 0.25,
+					vy: (Math.random() - 0.5) * 0.25,
+					r: Math.random() * 1.6 + 0.8
+				});
+			}
+		}
+
+		function resize() {
+			var rect = heroSection.getBoundingClientRect();
+			W = rect.width; H = rect.height;
+			canvas.width = W * dpr;
+			canvas.height = H * dpr;
+			canvas.style.width = W + 'px';
+			canvas.style.height = H + 'px';
+			ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+			seedParticles();
+		}
+
+		function step() {
+			ctx.clearRect(0, 0, W, H);
+
+			for (var i = 0; i < particles.length; i++) {
+				var p = particles[i];
+
+				if (mouse.active) {
+					var mdx = p.x - mouse.x, mdy = p.y - mouse.y;
+					var mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+					if (mdist < MOUSE_DIST && mdist > 0.01) {
+						var force = (1 - mdist / MOUSE_DIST) * 0.6;
+						p.vx += (mdx / mdist) * force * 0.05;
+						p.vy += (mdy / mdist) * force * 0.05;
+					}
+				}
+
+				p.x += p.vx;
+				p.y += p.vy;
+				p.vx *= 0.98;
+				p.vy *= 0.98;
+
+				if (p.x < -10) p.x = W + 10;
+				if (p.x > W + 10) p.x = -10;
+				if (p.y < -10) p.y = H + 10;
+				if (p.y > H + 10) p.y = -10;
+
+				ctx.beginPath();
+				ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+				ctx.fillStyle = 'rgba(160, 150, 255, 0.7)';
+				ctx.fill();
+			}
+
+			for (var a = 0; a < particles.length; a++) {
+				for (var b = a + 1; b < particles.length; b++) {
+					var dx = particles[a].x - particles[b].x;
+					var dy = particles[a].y - particles[b].y;
+					var dist = Math.sqrt(dx * dx + dy * dy);
+					if (dist < LINK_DIST) {
+						ctx.beginPath();
+						ctx.moveTo(particles[a].x, particles[a].y);
+						ctx.lineTo(particles[b].x, particles[b].y);
+						ctx.strokeStyle = 'rgba(123, 104, 238,' + (0.16 * (1 - dist / LINK_DIST)) + ')';
+						ctx.lineWidth = 1;
+						ctx.stroke();
+					}
+				}
+				if (mouse.active) {
+					var pdx = particles[a].x - mouse.x, pdy = particles[a].y - mouse.y;
+					var pdist = Math.sqrt(pdx * pdx + pdy * pdy);
+					if (pdist < MOUSE_DIST) {
+						ctx.beginPath();
+						ctx.moveTo(particles[a].x, particles[a].y);
+						ctx.lineTo(mouse.x, mouse.y);
+						ctx.strokeStyle = 'rgba(180, 170, 255,' + (0.35 * (1 - pdist / MOUSE_DIST)) + ')';
+						ctx.lineWidth = 1;
+						ctx.stroke();
+					}
+				}
+			}
+		}
+
+		var running = true;
+		function loop() {
+			if (!running) return;
+			step();
+			requestAnimationFrame(loop);
+		}
+
+		resize();
+		window.addEventListener('resize', resize);
+
+		if (fine) {
+			heroSection.addEventListener('mousemove', function (e) {
+				var rect = heroSection.getBoundingClientRect();
+				mouse.x = e.clientX - rect.left;
+				mouse.y = e.clientY - rect.top;
+				mouse.active = true;
+			});
+			heroSection.addEventListener('mouseleave', function () {
+				mouse.active = false;
+			});
+		}
+
+		document.addEventListener('visibilitychange', function () {
+			running = !document.hidden;
+			if (running) requestAnimationFrame(loop);
+		});
+
+		if (reduceMotion) {
+			step();
+		} else {
+			loop();
+		}
+	}());
+	</script>
+
 	<!-- Three.js -->
 	<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
 
@@ -829,23 +1084,22 @@
 		var camera = new THREE.PerspectiveCamera(42, W / H, 0.1, 100);
 		camera.position.set(0, 0, 6.5);
 
-		/* ── Shape: exact favicon outline ──────────────────────────────────
-		 *
-		 *  1. outer-TL → tip              left arm outer edge
-		 *  2. tip → outer-TR              right arm outer edge
-		 *  3. outer-TR → hook-left        right arm extends LEFT across hollow
-		 *  4. hook-left → hook-tip        hook drops STRAIGHT DOWN
-		 *  5. hook-tip → inner-TL         long diagonal back UP-LEFT
-		 *  6. close → outer-TL            horizontal close at top
+		/* ── Shape: hollow triangle, right half of top bar removed ──
+		 *  Single connected polygon: outer CCW, inner traced CW back to start.
+		 *  Left half of top bar is kept; right arm is open at the top.
 		 */
 		var shape = new THREE.Shape();
-		shape.moveTo(-1.05,  1.00);  /* outer top-left  */
-		shape.lineTo(  0.00, -1.35); /* bottom tip      */
-		shape.lineTo(  1.05,  1.00); /* outer top-right */
-		shape.lineTo(  0.42,  1.00); /* inner top-right */
-		shape.lineTo(  0.00, -0.55); /* inner tip       */
-		shape.lineTo( -0.42,  1.00); /* inner top-left  */
-		shape.closePath();
+		shape.moveTo( 0.70,  1.00);  /* bar's miter-cut end (outer)        */
+		shape.lineTo(-1.26,  1.00);  /* outer top-left                     */
+		shape.lineTo( 0.00, -1.35);  /* bottom tip                         */
+		shape.lineTo( 1.55,  1.00);  /* outer top-right — flat top, matches left leg height, shifted right for a clear gap */
+		shape.lineTo( 1.15,  1.00);  /* inner top-right (right arm cap) — full-width cap, just moved clear of the bar's end (0.70) */
+		shape.lineTo( 0.00, -0.62);  /* inner bottom tip                   */
+		shape.lineTo(-0.70,  0.70);  /* inner top-left                     */
+		shape.lineTo( 0.00,  0.70);  /* bar inner edge — extends the bar   */
+		shape.lineTo(-0.15,  0.40);  /* new bar — inner edge, heading down */
+		shape.lineTo( 0.55,  0.70);  /* new bar — sliced tip (parallel to root cut) */
+		shape.closePath();           /* new bar outer edge back to (0.70, 1.00) */
 
 		var geo = new THREE.ExtrudeGeometry(shape, {
 			depth: 0.50,
@@ -888,38 +1142,6 @@
 		group.add(shell);
 		group.add(mesh);
 		group.add(edgeLines);
-
-		/* ── Partial top cover — grows from left edge, stops just before right edge ── */
-		var bb      = geo.boundingBox;
-		var cTopY   = bb.max.y;
-		var cLeft   = bb.min.x;
-		var cRight  = bb.min.x + (bb.max.x - bb.min.x) * 0.85;
-		var cZFront = bb.max.z;
-		var cZBack  = bb.min.z;
-
-		var coverVerts = new Float32Array([
-			cLeft,  cTopY, cZBack,
-			cLeft,  cTopY, cZFront,
-			cRight, cTopY, cZFront,
-			cRight, cTopY, cZBack
-		]);
-		var coverGeo = new THREE.BufferGeometry();
-		coverGeo.setAttribute('position', new THREE.BufferAttribute(coverVerts, 3));
-		coverGeo.setIndex(new THREE.BufferAttribute(new Uint16Array([0,1,2, 0,2,3]), 1));
-		coverGeo.computeVertexNormals();
-
-		var matCover = new THREE.MeshPhongMaterial({
-			color:     0x0d0d0d,
-			emissive:  0x000000,
-			specular:  0xffffff,
-			shininess: 300,
-			side:      THREE.DoubleSide
-		});
-		group.add(new THREE.Mesh(coverGeo, matCover));
-		group.add(new THREE.LineSegments(
-			new THREE.EdgesGeometry(coverGeo),
-			new THREE.LineBasicMaterial({ color: 0x888888, transparent: true, opacity: 0.4 })
-		));
 
 		scene.add(group);
 

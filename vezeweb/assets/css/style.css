@@ -1454,7 +1454,21 @@ p:last-child {
 
 .project-item img {
 	width: 100%;
+	height: 260px;
+	object-fit: cover;
+	object-position: top;
     border-radius: 0px;
+    display: block;
+}
+
+/* Swiper slides inside portfolio cards match the same height */
+.project-item .portfolio-swiper {
+    height: 260px;
+}
+
+.project-item .portfolio-swiper .swiper-slide,
+.project-item .portfolio-swiper .swiper-wrapper {
+    height: 260px;
 }
 
 .project-item {
@@ -1517,6 +1531,114 @@ p:last-child {
     bottom: 10px;
     opacity: 1;
     visibility: visible;
+}
+
+/* ── Portfolio upgrades ── */
+.section-title .section-subtitle {
+    font-size: 15px;
+    color: #777;
+    margin-top: 10px;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.portfolio-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.filter-btn {
+    padding: 8px 24px;
+    border: 2px solid #e0e0e0;
+    border-radius: 30px;
+    background: transparent;
+    color: #555;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.25s;
+    font-family: 'Cabin', sans-serif;
+    text-transform: uppercase;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: #7b68ee;
+    border-color: #7b68ee;
+    color: #fff;
+}
+
+.portfolio-item.hidden {
+    display: none;
+}
+
+.project-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 3;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    color: #fff;
+}
+
+.web-badge    { background: #7b68ee; }
+.mobile-badge { background: #22c55e; }
+.store-badge  { background: #f59e0b; }
+
+.project-content-overlay .project-meta {
+    display: block;
+    font-size: 11px;
+    color: #aaa;
+    margin-top: 5px;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+}
+
+.portfolio-cta {
+    margin-top: 50px;
+}
+
+/* Mini swiper inside portfolio cards */
+.project-item .portfolio-swiper {
+    width: 100%;
+    overflow: hidden;
+}
+
+.project-item .portfolio-swiper .swiper-slide img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+    border-radius: 0;
+}
+
+.project-item .portfolio-swiper .swiper-pagination {
+    bottom: 8px;
+}
+
+.project-item .portfolio-swiper .swiper-pagination-bullet {
+    background: #fff;
+    opacity: 0.6;
+    width: 6px;
+    height: 6px;
+}
+
+.project-item .portfolio-swiper .swiper-pagination-bullet-active {
+    opacity: 1;
+    background: #7b68ee;
+    width: 18px;
+    border-radius: 4px;
 }
 
 /*******************************************
@@ -2612,6 +2734,35 @@ p:last-child {
     50%      { transform: scale(1.35); opacity: 0.2; }
 }
 
+/* Cursor-driven parallax wrapper — JS sets translate3d, CSS keyframes stay on the child */
+.hero-orb-parallax {
+    position: absolute;
+    inset: 0;
+    will-change: transform;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Soft light that follows the cursor */
+.hero-spotlight {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: radial-gradient(500px circle at var(--mx, 50%) var(--my, 40%), rgba(140, 120, 255, 0.16), transparent 65%);
+    transition: background 0.15s ease-out;
+    pointer-events: none;
+}
+
+/* Interactive particle network canvas */
+.hero-particles {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: block;
+    pointer-events: none;
+}
+
 /* Content row needs to sit above all bg layers */
 .home-section .d-table {
     position: relative;
@@ -2645,7 +2796,7 @@ p:last-child {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 560px;
+    height: 680px;
 }
 
 /* Ambient glow behind the V */
@@ -2731,7 +2882,7 @@ p:last-child {
 /* ---- Responsive overrides ---- */
 @media (max-width: 1199px) {
     .hero-v-wrapper {
-        height: 420px;
+        height: 500px;
     }
 }
 
@@ -2744,7 +2895,7 @@ p:last-child {
         justify-content: center;
     }
     .hero-v-wrapper {
-        height: 300px;
+        height: 360px;
         padding: 0;
     }
     .hero-social-fixed {
@@ -2755,7 +2906,7 @@ p:last-child {
 
 @media (max-width: 575px) {
     .hero-v-wrapper {
-        height: 240px;
+        height: 280px;
     }
     .main-banner-content h1 {
         font-size: 42px;

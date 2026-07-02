@@ -40,13 +40,6 @@
 	}
 
 	
-	.home-section {
-		height: 100%;
-		padding-top: 150px;
-		padding-bottom: 100px;
-		background-position: center;
-	}
-
 	.slider .control-text {
 		display: none;
 	}
@@ -389,13 +382,6 @@
 		margin-top: 0;
 	}
 
-	.home-section {
-		height: 100%;
-		padding-top: 150px;
-		padding-bottom: 100px;
-		background-position: center;
-	}
-	
 }
 
 @media only screen and (min-width: 0px) and (max-width: 380px) {
@@ -495,13 +481,6 @@
 
 	.webtech-responsive-nav .mean-container a.meanmenu-reveal span {
 		background: #fff;
-	}
-
-	.home-section {
-		padding-top: 170px;
-		padding-bottom: 100px;
-		background-position: center;
-		height: 100%;
 	}
 
 	.slider .parallax-slider .caption h1 {
@@ -778,9 +757,6 @@
 		font-size: 15px;
 	}
 
-	.home-section {
-		height: 800px;
-	}
 	.home-section.home-2 .main-banner-content h1 {
 		font-size: 45px;
 	}
