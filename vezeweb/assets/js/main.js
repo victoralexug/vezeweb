@@ -239,3 +239,323 @@ document.addEventListener("DOMContentLoaded", function () {
 		}, 1200); // 1 second delay
 	});
 });
+
+/* ============================================================
+   VEZEWEB — VICTOR EZE PROFILE
+============================================================ */
+
+
+/* ============================================================
+   MOBILE NAVIGATION
+============================================================ */
+
+const menuToggle = document.getElementById("menuToggle");
+const mobileMenu = document.getElementById("mobileMenu");
+
+if (menuToggle && mobileMenu) {
+
+  menuToggle.addEventListener("click", () => {
+
+    const isOpen =
+      mobileMenu.classList.toggle("open");
+
+    menuToggle.setAttribute(
+      "aria-expanded",
+      isOpen.toString()
+    );
+
+  });
+
+
+  /*
+   * Close the mobile menu after clicking a link.
+   */
+
+  const mobileLinks =
+    mobileMenu.querySelectorAll("a");
+
+  mobileLinks.forEach((link) => {
+
+    link.addEventListener("click", () => {
+
+      mobileMenu.classList.remove("open");
+
+      menuToggle.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
+    });
+
+  });
+
+}
+
+
+/* ============================================================
+   HEADER SCROLL EFFECT
+============================================================ */
+
+const header =
+  document.getElementById("siteHeader");
+
+function updateHeader() {
+
+  if (!header) return;
+
+  if (window.scrollY > 30) {
+
+    header.classList.add("scrolled");
+
+  } else {
+
+    header.classList.remove("scrolled");
+
+  }
+
+}
+
+window.addEventListener(
+  "scroll",
+  updateHeader,
+  {
+    passive: true
+  }
+);
+
+updateHeader();
+
+
+/* ============================================================
+   SCROLL REVEAL
+============================================================ */
+
+const revealElements =
+  document.querySelectorAll(".reveal");
+
+if ("IntersectionObserver" in window) {
+
+  const observer =
+    new IntersectionObserver(
+      (entries, observerInstance) => {
+
+        entries.forEach((entry) => {
+
+          if (!entry.isIntersecting) return;
+
+          entry.target.classList.add("visible");
+
+          observerInstance.unobserve(
+            entry.target
+          );
+
+        });
+
+      },
+      {
+        threshold: 0.12,
+        rootMargin: "0px 0px -50px 0px"
+      }
+    );
+
+  revealElements.forEach((element) => {
+
+    observer.observe(element);
+
+  });
+
+} else {
+
+  revealElements.forEach((element) => {
+
+    element.classList.add("visible");
+
+  });
+
+}
+
+
+/* ============================================================
+   CURRENT YEAR
+============================================================ */
+
+const yearElement =
+  document.getElementById("currentYear");
+
+if (yearElement) {
+
+  yearElement.textContent =
+    new Date().getFullYear();
+
+}
+
+
+/* ============================================================
+   SMOOTH ANCHOR SCROLL
+============================================================ */
+
+document
+  .querySelectorAll('a[href^="#"]')
+  .forEach((link) => {
+
+    link.addEventListener(
+      "click",
+      function (event) {
+
+        const targetId =
+          this.getAttribute("href");
+
+        if (
+          !targetId ||
+          targetId === "#"
+        ) {
+          return;
+        }
+
+        const target =
+          document.querySelector(targetId);
+
+        if (!target) return;
+
+        event.preventDefault();
+
+        target.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+
+      }
+    );
+
+  });
+
+
+/* ============================================================
+   IMAGE ERROR FALLBACK
+============================================================ */
+
+document
+  .querySelectorAll("img")
+  .forEach((image) => {
+
+    image.addEventListener(
+      "error",
+      () => {
+
+        image.style.background =
+          "#deded9";
+
+        image.style.minHeight =
+          "300px";
+
+        image.removeAttribute("src");
+
+        image.alt =
+          "Victor Eze image placeholder";
+
+      }
+    );
+
+  });
+
+
+/* ============================================================
+   UPDATE ACTIVE NAVIGATION
+============================================================ */
+
+const sections =
+  document.querySelectorAll(
+    "section[id]"
+  );
+
+const navLinks =
+  document.querySelectorAll(
+    '.desktop-nav a[href^="#"]'
+  );
+
+if (
+  sections.length &&
+  navLinks.length &&
+  "IntersectionObserver" in window
+) {
+
+  const sectionObserver =
+    new IntersectionObserver(
+      (entries) => {
+
+        entries.forEach((entry) => {
+
+          if (!entry.isIntersecting) return;
+
+          const id =
+            entry.target.getAttribute("id");
+
+          navLinks.forEach((link) => {
+
+            link.classList.remove(
+              "active"
+            );
+
+            if (
+              link.getAttribute("href") ===
+              `#${id}`
+            ) {
+
+              link.classList.add(
+                "active"
+              );
+
+            }
+
+          });
+
+        });
+
+      },
+      {
+        rootMargin:
+          "-30% 0px -60% 0px"
+      }
+    );
+
+  sections.forEach((section) => {
+
+    sectionObserver.observe(section);
+
+  });
+
+}
+
+
+/* ============================================================
+   KEYBOARD ACCESSIBILITY
+============================================================ */
+
+document.addEventListener(
+  "keydown",
+  (event) => {
+
+    if (event.key === "Escape") {
+
+      if (
+        mobileMenu &&
+        mobileMenu.classList.contains("open")
+      ) {
+
+        mobileMenu.classList.remove("open");
+
+        if (menuToggle) {
+
+          menuToggle.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+        }
+
+      }
+
+    }
+
+  }
+);
